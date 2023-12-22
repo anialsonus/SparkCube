@@ -16,6 +16,8 @@
  */
 
 $(function() {
+    $('#mymodal-data').toggle();
+
     $("span.additional-dimension").click(function() {
         $(this).parent().find('input[type="checkbox"]').trigger('click');
     });
@@ -127,8 +129,11 @@ $(function() {
            $.ajax({
                 url: url,
                 type: "PUT",
+                contentType: "application/json",
+                dataType: "json",
                 data: JSON.stringify({param: JSON.stringify(cacheDetail)}),
                 headers: {
+                    "Accept": "application/json",
                     "Content-Type": "application/json",
                     "X-HTTP-Method-Override": "PUT" },
                 success: function(response) {
@@ -174,7 +179,10 @@ function dropCache(cacheId) {
   $.ajax({
     url: url,
     type: "PUT",
+    contentType: "application/json",
+    dataType: "json",
     headers: {
+      "Accept": "application/json",
       "Content-Type": "application/json",
       "X-HTTP-Method-Override": "PUT" },
       success: function(response) {
